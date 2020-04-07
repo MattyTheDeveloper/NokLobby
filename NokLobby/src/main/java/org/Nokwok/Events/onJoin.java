@@ -19,7 +19,7 @@ public class onJoin implements Listener {
     public void onJoin(PlayerJoinEvent e ) {
         Player p = e.getPlayer();
 
-        if (p.hasPermission("donor.join")) {
+        if (p.hasPermission("event.join")) {
             e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Joinformat").replace("<player>", p.getName())));
         } else {
             e.setJoinMessage(null);
@@ -30,9 +30,11 @@ public class onJoin implements Listener {
     public void onJoin(PlayerQuitEvent e ) {
         Player p = e.getPlayer();
 
-        if (p.hasPermission("donor.join")) {
+        if (p.hasPermission("event.join")) {
+            p.setAllowFlight(true);
             e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Leaveformat").replace("<player>", p.getName())));
         } else {
+            p.setAllowFlight(true);
             e.setQuitMessage(null);
         }
     }
