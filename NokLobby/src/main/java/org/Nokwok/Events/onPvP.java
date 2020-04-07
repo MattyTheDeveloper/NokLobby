@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 
 public class onPvP implements Listener {
 
@@ -16,11 +17,18 @@ public class onPvP implements Listener {
 
     @EventHandler
     public void onPvp(EntityDamageByEntityEvent e) {
-        if (plugin.getConfig().getString("PVP").equals(false)) {
+        if (plugin.getConfig().getString("PVP").equalsIgnoreCase("false")) {
             e.setCancelled(true);
-        } else {
+        } if (plugin.getConfig().getString("PVP").equalsIgnoreCase("true")) {
             e.setCancelled(false);
+        } else {
+            e.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public void onDamage(EntityDamageEvent e ) {
+        e.setCancelled(true);
     }
 
 }
