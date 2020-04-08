@@ -21,9 +21,9 @@ public class spawn implements CommandExecutor {
                 p.sendMessage(ChatColor.RED + "You cannot use this command.");
             } else {
                 // Getting the worlds spawn location.
-                Location spawn = p.getWorld().getSpawnLocation();
+                Location spawnloc = p.getWorld().getSpawnLocation();
                 // TPs the user to that location.
-                p.teleport(spawn);
+                p.teleport(spawnloc);
                 p.sendMessage(ChatColor.GREEN + "You have been teleported to spawn.");
             }
         }
