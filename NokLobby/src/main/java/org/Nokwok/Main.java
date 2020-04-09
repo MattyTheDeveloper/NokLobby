@@ -26,6 +26,9 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Scoreboard(this), this);
         getServer().getPluginManager().registerEvents(new onPvP(this), this );
         getServer().getPluginManager().registerEvents(new onBlockEvent(this), this);
+        getServer().getPluginManager().registerEvents(new serverClickEvent(this), this);
+        getServer().getPluginManager().registerEvents(new firstJoin(this), this);
+        getServer().getPluginManager().registerEvents(new ItemDropEvent(), this);
     }
 
     private void SetupCmds() {
