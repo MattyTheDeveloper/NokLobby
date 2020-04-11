@@ -1,28 +1,60 @@
 package org.Nokwok.Events;
 
+import net.milkbowl.vault.chat.Chat;
 import org.Nokwok.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
 
 public class onJoin implements Listener {
 
     Main plugin;
-    public onJoin(Main instance) {
-        plugin = instance;
+    private Chat chat = null;
+
+    public onJoin(Main main, Chat chat) {
+        this.plugin = main;
+        this.chat = chat;
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e ) {
         Player p = e.getPlayer();
+        int x = plugin.getConfig().getInt("Spawn.X");
+        int y = plugin.getConfig().getInt("Spawn.Y");
+        int z = plugin.getConfig().getInt("Spawn.Z");
+        p.teleport(new Location(p.getWorld(), x,y,z));
+        p.getInventory().clear();
+        p.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getPlayerPrefix(p)+p.getName()));
+        if (p.hasPlayedBefore()) {
+            if (p.hasPermission(plugin.getConfig().getString("Lobby.Join"))) {
+                e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("format.join").replace("<prefix>", chat.getPlayerPrefix(p)).replace("<player>", p.getName())));
 
-        if (p.hasPermission("event.join")) {
-            e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Joinformat").replace("<player>", p.getName())));
+            } else {
+                e.setJoinMessage(null);
+            }
         } else {
-            e.setJoinMessage(null);
+            int unique = plugin.getConfig().getInt("firstjoins");
+            unique++;
+            plugin.getConfig().set("firstjoins", unique);
+            plugin.saveConfig();
+
+            String uniquestring = String.valueOf(unique);
+            e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("format.firstjoin").replace("[UNIQUE]", uniquestring).replace("<player>", p.getName())));
         }
     }
 
@@ -30,12 +62,14 @@ public class onJoin implements Listener {
     public void onJoin(PlayerQuitEvent e ) {
         Player p = e.getPlayer();
 
-        if (p.hasPermission("event.join")) {
+        if (p.hasPermission(plugin.getConfig().getString("Lobby.Join"))) {
             p.setAllowFlight(true);
-            e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Leaveformat").replace("<player>", p.getName())));
+            e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("format.quit").replace("<prefix>", chat.getPlayerPrefix(p)).replace("<player>", p.getName())));
         } else {
             p.setAllowFlight(true);
             e.setQuitMessage(null);
         }
     }
+
 }
+

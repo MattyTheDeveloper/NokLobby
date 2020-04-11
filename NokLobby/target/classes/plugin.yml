@@ -7,3 +7,5 @@ commands:
   elytra:
     aliases: [ely]
     description: Fly!
+  spawn:
+    description: Spawn!

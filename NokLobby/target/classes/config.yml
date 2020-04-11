@@ -1,0 +1,44 @@
+#####################################
+##                                 ##
+##            MESSAGES             ##
+##                                 ##
+#####################################
+
+firstjoins: 0
+
+format:
+  join: '<prefix><player> &3has connected to the lobby.'
+  quit: '<prefix><player> &3has left the lobby.'
+  chat: '<prefix><player>&7: &f<message> '
+  firstjoin: '&b<player> &7has joined the lobby for the first time! &3[#[UNIQUE]]'
+
+#####################################
+##                                 ##
+##           PERMISSIONS           ##
+##                                 ##
+#####################################
+
+Permission:
+  message: '&cInsufficient Permissions!'
+Lobby:
+  Join: 'Lobby.join'
+  Ride: 'Lobby.ride'
+  Build: 'Lobby.build'
+  Command:
+    elytra: 'Lobby.command.Eltra'
+    setspawn: 'Lobby.command.setspawn'
+
+#####################################
+##                                 ##
+##              MISC               ##
+##                                 ##
+#####################################
+
+Spawn:
+  X: 11.5
+  Y: 40
+  Z: 33
+
+Pvp:
+  All: false
+  Player: true
