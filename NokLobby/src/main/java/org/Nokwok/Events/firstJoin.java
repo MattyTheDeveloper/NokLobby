@@ -48,7 +48,8 @@ Main plugin;
                 Inventory serverinv = Bukkit.createInventory(p, 9, ChatColor.GRAY + "Server list");
                 ItemStack events = new ItemStack(Material.FIREWORK_ROCKET);
                 ItemStack smp = new ItemStack(Material.GOLDEN_SHOVEL);
-                ItemStack PLACEHOLDER = new ItemStack(Material.GRASS_BLOCK); // This is a placeholder, please edit accordingly.
+                ItemStack othergamemode = new ItemStack(Material.GRASS_BLOCK); 
+                // This is a placeholder, please edit accordingly.
                 
                 ItemMeta eventmeta = events.getItemMeta();
                 eventmeta.setDisplayName(ChatColor.RED + "Events");
@@ -62,11 +63,11 @@ Main plugin;
                 smplore.add(ChatColor.RED + "Survival Multiplayer");
                 smpmeta.setLore(smplore);
                 
-                ItemMeta PLACEHOLDERMETA = PLACEHOLDER.getItemMeta();
-                PLACEHOLDERMETA.setDisplayName(ChatColor.RED + "PLACEHOLDER");
-                ArrayList PLACEHOLDERLORE = new ArrayList();
-                PLACEHOLDERLORE.add(ChatColor.RED + "PLACEHOLDER");
-                PLACEHOLDERMETA.setLore(PLACEHOLDERLORE);
+                ItemMeta othergamemodemeta = othergamemode.getItemMeta();
+                othergamemodemeta.setDisplayName(ChatColor.RED + "PLACEHOLDER");
+                ArrayList othergamemodelore = new ArrayList();
+                othergamemodelore.add(ChatColor.RED + "PLACEHOLDER");
+                othergamemodemeta.setLore(othergamemodelore);
                 
                 serverinv.setItem(2, events);
                 serverinv.setItem(4, smp);
