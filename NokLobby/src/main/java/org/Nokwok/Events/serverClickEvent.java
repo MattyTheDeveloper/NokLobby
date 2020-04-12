@@ -23,7 +23,7 @@ Main plugin;
             String smpcmd = "server smp";
             String eventscmd = "server events"
             //  Should work now. -Hit
-        if (e.getView().getTitle().equals(ChatColor.translateAlternateColorCodes('&', "&7Server list"))){
+        if (e.getView().getTitle().equals(ChatColor.translateAlternateColorCodes('&', "&3Server list"))){
                 if(e.getCurrentItem() == null){
                     return;
                 }else if(e.getCurrentItem().getType().equals(Material.GOLD_SPADE)){
