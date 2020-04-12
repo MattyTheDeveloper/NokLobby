@@ -48,7 +48,7 @@ Main plugin;
                 Inventory serverinv = Bukkit.createInventory(p, 9, ChatColor.GRAY + "Server list");
                 ItemStack events = new ItemStack(Material.FIREWORK_ROCKET);
                 ItemStack smp = new ItemStack(Material.GOLDEN_SHOVEL);
-                ItemStack othergamemode = new ItemStack(Material.GRASS_BLOCK); 
+                ItemStack othergamemode = new ItemStack(Material.GRASS); 
                 // This is a placeholder, please edit accordingly.
                 
                 ItemMeta eventmeta = events.getItemMeta();
@@ -68,7 +68,7 @@ Main plugin;
                 ArrayList othergamemodelore = new ArrayList();
                 othergamemodelore.add(ChatColor.RED + "PLACEHOLDER");
                 othergamemodemeta.setLore(othergamemodelore);
-                
+                // Updated, should work now. -Hit.
                 serverinv.setItem(2, events);
                 serverinv.setItem(4, smp);
                 serverinv.setItem(6, PLACEHOLDER);
