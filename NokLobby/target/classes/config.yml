@@ -22,11 +22,11 @@ Permission:
   message: '&cInsufficient Permissions!'
 Lobby:
   Join: 'Lobby.join'
-  Ride: 'Lobby.ride'
   Build: 'Lobby.build'
+  Interact: 'Lobby.interact'
   Command:
-    elytra: 'Lobby.command.Eltra'
     setspawn: 'Lobby.command.setspawn'
+    elytra: 'Lobby.command.elytra'
 
 #####################################
 ##                                 ##
@@ -35,7 +35,7 @@ Lobby:
 #####################################
 
 Spawn:
-  X: 11.5
+  X: -12
   Y: 40
   Z: 33
 

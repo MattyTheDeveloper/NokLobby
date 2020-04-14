@@ -22,10 +22,10 @@ public class ItemDropEvent implements Listener {
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent e){
         Player p = e.getPlayer();
-        if (!p.hasPermission("Lobby.drop")){
-            e.setCancelled(true);
-        }else{
+        if (p.hasPermission(plugin.getConfig().getString("Lobby.Interact"))) {
             e.setCancelled(false);
+        }else{
+            e.setCancelled(true);
         }
     }
 }

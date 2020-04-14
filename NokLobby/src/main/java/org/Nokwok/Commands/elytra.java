@@ -16,7 +16,9 @@ public class elytra implements CommandExecutor {
     Main plugin;
 
     public elytra(Main instance) {
+
         plugin = instance;
+
     }
 
     @Override
@@ -31,11 +33,14 @@ public class elytra implements CommandExecutor {
                 p.setVelocity(new Vector(0, 18, 0));
                 p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 3.0F, 0.5F);
             } else {
-                plugin.getConfig().getString("permission.message");
+                plugin.getConfig().getString("Permission.message");
                 p.playSound(p.getLocation(), Sound.ENTITY_BAT_DEATH, 1.0F, 0.5F);
             }
         }
 
-    return false;
+        return false;
     }
+
 }
+
+

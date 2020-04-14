@@ -43,12 +43,12 @@ public class onPvP implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
-            e.setCancelled(true);
             Entity p = e.getEntity();
             int x = plugin.getConfig().getInt("Spawn.X");
             int y = plugin.getConfig().getInt("Spawn.Y");
             int z = plugin.getConfig().getInt("Spawn.Z");
             p.teleport(new Location(p.getWorld(), x,y,z));
+            e.setCancelled(true);
         } else if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)){
             e.setCancelled(true);
         } else {

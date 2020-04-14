@@ -5,10 +5,15 @@ import org.Nokwok.Commands.elytra;
 import org.Nokwok.Commands.spawn;
 import org.Nokwok.Events.*;
 import org.Nokwok.Misc.Scoreboard;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
+
+import java.io.*;
 
 public class Main extends JavaPlugin implements Listener {
     FileConfiguration config = getConfig();
@@ -16,6 +21,7 @@ public class Main extends JavaPlugin implements Listener {
     
     @Override
     public void onEnable() {
+
         getLogger().info("Plugin has successfully loaded.");
         config.options().copyDefaults(true);
         saveConfig();
@@ -34,14 +40,15 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new onPvP(this, chat), this );
         getServer().getPluginManager().registerEvents(new onBlockEvent(this, chat), this);
         getServer().getPluginManager().registerEvents(new onChat(this, chat), this);
-        getServer().getPluginManager().registerEvents(new onJoinGUI(), this);
         getServer().getPluginManager().registerEvents(new RideEvent(this, chat), this);
         getServer().getPluginManager().registerEvents(new ItemDropEvent(this, chat), this);
+        getServer().getPluginManager().registerEvents(new MobEvent(), this);
+        getServer().getPluginManager().registerEvents(new InventoryEvent(this, chat), this);
     }
 
     private void SetupCmds() {
-        this.getCommand("Elytra").setExecutor(new elytra(this));
         this.getCommand("spawn").setExecutor(new spawn(this, chat));
+        this.getCommand("elytra").setExecutor(new elytra(this));
     }
 
     private boolean setupChat() {
@@ -53,4 +60,6 @@ public class Main extends JavaPlugin implements Listener {
     public Chat getChat() {
         return chat;
     }
+
 }
+

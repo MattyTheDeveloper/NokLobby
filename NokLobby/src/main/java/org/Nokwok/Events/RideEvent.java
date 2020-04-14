@@ -27,10 +27,9 @@ public class RideEvent implements Listener {
         if (e.getRightClicked().getType().equals(EntityType.PLAYER)) {
             Entity target = e.getRightClicked();
             if (p.hasPermission(plugin.getConfig().getString("Lobby.Ride"))) {
-                if (target.getVehicle() != null) {
-                    target.setPassenger(p);
-                    p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 3.0F, 0.5F);
-                }
+                target.addPassenger(p);
+                p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 3.0F, 0.5F);
+
             }
 
         }

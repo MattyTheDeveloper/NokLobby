@@ -2,10 +2,7 @@ package org.Nokwok.Events;
 
 import net.milkbowl.vault.chat.Chat;
 import org.Nokwok.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +15,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 
@@ -34,16 +32,20 @@ public class onJoin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e ) {
         Player p = e.getPlayer();
+        p.setGameMode(GameMode.ADVENTURE);
+        p.setAllowFlight(true);
+        p.setFlying(true);
+
         int x = plugin.getConfig().getInt("Spawn.X");
         int y = plugin.getConfig().getInt("Spawn.Y");
         int z = plugin.getConfig().getInt("Spawn.Z");
         p.teleport(new Location(p.getWorld(), x,y,z));
-        p.getInventory().clear();
+
         p.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getPlayerPrefix(p)+p.getName()));
+
         if (p.hasPlayedBefore()) {
             if (p.hasPermission(plugin.getConfig().getString("Lobby.Join"))) {
                 e.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("format.join").replace("<prefix>", chat.getPlayerPrefix(p)).replace("<player>", p.getName())));
-
             } else {
                 e.setJoinMessage(null);
             }
@@ -63,7 +65,6 @@ public class onJoin implements Listener {
         Player p = e.getPlayer();
 
         if (p.hasPermission(plugin.getConfig().getString("Lobby.Join"))) {
-            p.setAllowFlight(true);
             e.setQuitMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("format.quit").replace("<prefix>", chat.getPlayerPrefix(p)).replace("<player>", p.getName())));
         } else {
             p.setAllowFlight(true);

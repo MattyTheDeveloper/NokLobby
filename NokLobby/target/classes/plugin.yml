@@ -4,8 +4,8 @@ author: Mattq
 version: 1.0
 
 commands:
-  elytra:
-    aliases: [ely]
-    description: Fly!
   spawn:
     description: Spawn!
+  elytra:
+    description: Swoosh!
+    aliases: [ely, elytra]
