@@ -4,7 +4,7 @@
 ##                                 ##
 #####################################
 
-firstjoins: 0
+firstjoins: 154
 
 format:
   join: '<prefix><player> &3has connected to the lobby.'
@@ -27,6 +27,8 @@ Lobby:
   Command:
     setspawn: 'Lobby.command.setspawn'
     elytra: 'Lobby.command.elytra'
+    event: 'Lobby.command.event'
+
 
 #####################################
 ##                                 ##
@@ -34,10 +36,14 @@ Lobby:
 ##                                 ##
 #####################################
 
+Event: '100VSMINI'
+
 Spawn:
-  X: -12
-  Y: 40
-  Z: 33
+  X: -12.0
+  Y: 40.0
+  Z: 33.0
+  Pitch: 0.0
+  Yaw: 0.0
 
 Pvp:
   All: false

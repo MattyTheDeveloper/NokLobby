@@ -2,6 +2,7 @@ name: Lobby
 main: org.Nokwok.Main
 author: Mattq
 version: 1.0
+api-version: 1.13
 
 commands:
   spawn:
@@ -9,3 +10,5 @@ commands:
   elytra:
     description: Swoosh!
     aliases: [ely, elytra]
+  event:
+    description: Event

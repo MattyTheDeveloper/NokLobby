@@ -27,23 +27,6 @@ public class Scoreboard implements Listener {
         Player p = e.getPlayer();
         if (chat.getPlayerPrefix(p) == null) {
 
-            org.bukkit.scoreboard.Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
-            Objective obj = board.registerNewObjective("Main", "dummy", ChatColor.translateAlternateColorCodes('&', "&b&lNokwok"));
-            obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-
-
-            Score blank = obj.getScore(ChatColor.GRAY + " ");
-            blank.setScore(5);
-            Score name = obj.getScore(ChatColor.GRAY + "Name: " + ChatColor.AQUA + p.getDisplayName());
-            name.setScore(4);
-            Score rank = obj.getScore(ChatColor.GRAY + "Rank: " + ChatColor.AQUA + "N/A");
-            rank.setScore(3);
-            Score blank1 = obj.getScore(ChatColor.GRAY + "  ");
-            blank1.setScore(2);
-            Score server = obj.getScore(ChatColor.GRAY + "Lobby: " + ChatColor.AQUA + "#1");
-            server.setScore(1);
-
-            p.setScoreboard(board);
         } else {
             org.bukkit.scoreboard.Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
             Objective obj = board.registerNewObjective("Main", "dummy", ChatColor.translateAlternateColorCodes('&', "&b&lNokwok"));
@@ -51,17 +34,14 @@ public class Scoreboard implements Listener {
 
 
             Score blank = obj.getScore(ChatColor.GRAY + " ");
-            blank.setScore(5);
             Score name = obj.getScore(ChatColor.GRAY + "Name: " + ChatColor.AQUA + p.getDisplayName());
-            name.setScore(4);
             Score rank = obj.getScore(ChatColor.GRAY + "Rank: " + ChatColor.AQUA + ChatColor.translateAlternateColorCodes('&', chat.getPlayerPrefix(p)));
-            rank.setScore(3);
             Score blank1 = obj.getScore(ChatColor.GRAY + "  ");
-            blank1.setScore(2);
             Score server = obj.getScore(ChatColor.GRAY + "Lobby: " + ChatColor.AQUA + "#1");
-            server.setScore(1);
+            Score unique = obj.getScore(ChatColor.GRAY+"Unique Joins: #"+ ChatColor.AQUA+plugin.getConfig().getString("firstjoins"));
 
-            p.setScoreboard(board);
+
+
         }
     }
 

@@ -2,6 +2,7 @@ package org.Nokwok.Events;
 
 import net.milkbowl.vault.chat.Chat;
 import org.Nokwok.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -44,11 +45,7 @@ public class onPvP implements Listener {
     public void onDamage(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
             Entity p = e.getEntity();
-            int x = plugin.getConfig().getInt("Spawn.X");
-            int y = plugin.getConfig().getInt("Spawn.Y");
-            int z = plugin.getConfig().getInt("Spawn.Z");
-            p.teleport(new Location(p.getWorld(), x,y,z));
-            e.setCancelled(true);
+            Bukkit.getServer().dispatchCommand(p, "spawn");
         } else if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)){
             e.setCancelled(true);
         } else {

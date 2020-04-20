@@ -36,10 +36,13 @@ public class onJoin implements Listener {
         p.setAllowFlight(true);
         p.setFlying(true);
 
-        int x = plugin.getConfig().getInt("Spawn.X");
-        int y = plugin.getConfig().getInt("Spawn.Y");
-        int z = plugin.getConfig().getInt("Spawn.Z");
-        p.teleport(new Location(p.getWorld(), x,y,z));
+        double x = plugin.getConfig().getDouble("Spawn.X");
+        double y = plugin.getConfig().getDouble("Spawn.Y");
+        double z = plugin.getConfig().getDouble("Spawn.Z");
+        float yaw = plugin.getConfig().getInt("Spawn.Yaw");
+        float pitch = plugin.getConfig().getInt("Spawn.Pitch");
+
+        p.teleport(new Location(p.getWorld(), x,y,z,yaw,pitch));
 
         p.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getPlayerPrefix(p)+p.getName()));
 
