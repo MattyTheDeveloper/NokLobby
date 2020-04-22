@@ -62,6 +62,7 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ItemDropEvent(this, chat), this);
         getServer().getPluginManager().registerEvents(new MobEvent(), this);
         getServer().getPluginManager().registerEvents(new InventoryEvent(this, chat), this);
+        getServer().getPluginManager().registerEvents(new MiniHitEvent(), this);
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     }
